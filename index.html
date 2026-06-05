@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FableWall — Fake News Detection Platform</title>
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="shortcut icon" type="image/png" href="logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #f6f2eb;
+      --surface: #ffffff;
+      --surface-soft: #f4efe6;
+      --surface-strong: #e7dccd;
+      --text: #1f2937;
+      --text-muted: #4b5563;
+      --text-soft: #6b7280;
+      --accent: #3f4d5f;
+      --accent-2: #9c6b4f;
+      --accent-3: #c75641;
+      --success: #18794d;
+      --success-bg: #ecfdf3;
+      --danger: #b3281a;
+      --danger-bg: #fef2f2;
+      --warning: #b96c3f;
+      --warning-bg: #fff7ed;
+      --green: var(--success);
+      --green-bg: var(--success-bg);
+      --orange: var(--warning);
+      --orange-bg: var(--warning-bg);
+      --red: var(--danger);
+      --red-bg: var(--danger-bg);
+      --brown-dark: #1f2937;
+      --brown-mid: #4b5563;
+      --brown-light: #6b7280;
+      --grey-100: #f3f1ec;
+      --grey-200: #e7e0d8;
+      --grey-500: #8d8a82;
+      --grey-700: #5a544d;
+      --grey-badge: #6b5d52;
+      --grey-badge-bg: #f4efe6;
+      --border: #d7c7b5;
+      --shadow-sm: 0 18px 45px rgba(15,23,42,0.08);
+      --shadow-md: 0 26px 70px rgba(15,23,42,0.1);
+      --radius: 26px;
+      --radius-sm: 14px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: radial-gradient(circle at top left, rgba(199,172,142,0.12), transparent 22%), linear-gradient(180deg, #f6f2eb 0%, #fcfaf7 100%);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.72;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
+
+    body.dark {
+      --bg: #0f172a;
+      --surface: #111827;
+      --surface-soft: #1f2937;
+      --surface-strong: #334155;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --text-soft: #cbd5e1;
+      --accent: #7dd3fc;
+      --accent-2: #fbbf24;
+      --accent-3: #f472b6;
+      --success: #34d399;
+      --success-bg: #0f766e;
+      --danger: #f87171;
+      --danger-bg: #fde2e2;
+      --warning: #fbbf24;
+      --warning-bg: #fef9c3;
+      --border: #475569;
+      background: #0b1120;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    header {
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(14px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(215,199,181,0.85);
+      transition: background 0.25s ease, border-color 0.25s ease;
+    }
+    body.dark header {
+      background: rgba(15,23,42,0.92);
+      border-color: rgba(71,85,105,0.75);
+    }
+    .header-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .logo-mark {
+      width: 42px; height: 42px;
+      background: var(--accent);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; font-weight: 900;
+      color: var(--surface);
+      flex-shrink: 0;
+    }
+    .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px; font-weight: 800;
+      color: var(--text);
+      line-height: 1.1;
+    }
+    .logo-tagline {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
+    .site-nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      margin-left: 0;
+    }
+    .site-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      transition: color 0.2s ease;
+    }
+    .site-nav a:hover,
+    .site-nav a:focus {
+      color: var(--accent);
+    }
+    body.dark .site-nav a {
+      color: var(--text-soft);
+    }
+    body.dark .site-nav a:hover,
+    body.dark .site-nav a:focus {
+      color: var(--accent-2);
+    }
+    .theme-toggle {
+      border: 1px solid rgba(63,77,95,0.18);
+      background: rgba(255,255,255,0.9);
+      color: var(--text);
+      padding: 12px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 700;
+      transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+    .theme-toggle:hover {
+      background: rgba(63,77,95,0.08);
+    }
+    body.dark .theme-toggle {
+      border-color: rgba(255,255,255,0.18);
+      background: rgba(15,23,42,0.78);
+      color: var(--surface);
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #3f4d5f 0%, #6a5e4f 55%, #b97d5b 100%);
+      border-radius: 36px;
+      padding: 72px 24px 88px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      margin: 24px 24px 0;
+    }
+    body.dark .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 55%, #4b5563 100%);
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 24% 20%, rgba(255,255,255,0.22), transparent 32%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -60px;
+      bottom: -60px;
+      width: 260px;
+      height: 260px;
+      background: rgba(255,255,255,0.16);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 12px; font-weight: 600;
+      color: rgba(255,255,255,0.92);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(32px, 5vw, 58px);
+      font-weight: 900;
+      color: var(--surface);
+      line-height: 1.05;
+      margin-bottom: 18px;
+    }
+    .hero h1 span { color: #f0c48d; }
+    .hero p {
+      font-size: 17px;
+      color: rgba(255,255,255,0.88);
+      max-width: 640px;
+      margin: 0 auto;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+    .hero-pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 28px;
+    }
+    .hero-pill {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 999px;
+      color: rgba(255,255,255,0.95);
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    main {
+      max-width: 980px;
+      margin: -48px auto 0;
+      padding: 0 24px 80px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .input-card {
+      background: var(--surface);
+      border-radius: 32px;
+      padding: 40px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(226,232,240,0.9);
+      margin-bottom: 32px;
+    }
+    .input-label {
+      display: block;
+      font-size: 13px; font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    textarea {
+      width: 100%;
+      padding: 18px 20px;
+      border: 1px solid rgba(99,102,241,0.18);
+      border-radius: 22px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--text);
+      resize: vertical;
+      min-height: 140px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      background: var(--surface-soft);
+      line-height: 1.75;
+    }
+    textarea:focus {
+      outline: none;
+      border-color: rgba(79,70,229,0.65);
+      box-shadow: 0 0 0 8px rgba(79,70,229,0.12);
+      background: var(--surface);
+    }
+    textarea::placeholder { color: var(--text-soft); }
+
+    .input-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .char-count { font-size: 12px; color: var(--text-soft); flex: 1; }
+
+    .btn-verify {
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: var(--surface);
+      border: none;
+      border-radius: 18px;
+      padding: 16px 34px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px; font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+      display: flex; align-items: center; gap: 10px;
+      white-space: nowrap;
+      box-shadow: 0 16px 40px rgba(79,70,229,0.18);
+    }
+    .btn-verify:hover { transform: translateY(-1px); }
+    .btn-verify:active { transform: translateY(0); }
+    .btn-verify:disabled { background: rgba(79,70,229,0.4); cursor: not-allowed; box-shadow: none; }
+
+    .btn-clear {
+      background: rgba(15,23,42,0.04);
+      color: var(--text-muted);
+      border: 1px solid rgba(15,23,42,0.08);
+      border-radius: 18px;
+      padding: 16px 20px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-clear:hover { background: rgba(79,70,229,0.08); color: var(--accent); }
+
+    .spinner-wrap {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      padding: 40px;
+      text-align: center;
+      background: var(--surface);
+      border-radius: 28px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(226,232,240,0.9);
+      margin-bottom: 24px;
+    }
+    .spinner-wrap.active { display: flex; }
+    .spinner {
+      width: 46px; height: 46px;
+      border: 4px solid rgba(79,70,229,0.15);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .spinner-text { font-size: 14px; color: var(--text-muted); }
+
+    #results { display: none; }
+    #results.active { display: block; animation: fadeUp 0.4s ease; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .verdict-banner {
+      border-radius: 28px;
+      padding: 30px 32px;
+      margin-bottom: 26px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(226,232,240,0.9);
+      background: var(--surface);
+    }
+    .verdict-banner.red { background: var(--danger-bg); border-color: rgba(220,38,38,0.18); }
+    .verdict-banner.green { background: var(--success-bg); border-color: rgba(22,163,74,0.18); }
+    .verdict-banner.orange { background: var(--warning-bg); border-color: rgba(217,119,6,0.18); }
+    .verdict-banner.grey { background: rgba(248,250,252,0.95); border-color: rgba(226,232,240,0.9); }
+
+    .verdict-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; flex-shrink: 0;
+    }
+    .verdict-banner.red .verdict-icon { background: rgba(220,38,38,0.12); }
+    .verdict-banner.green .verdict-icon { background: rgba(22,163,74,0.12); }
+    .verdict-banner.orange .verdict-icon { background: rgba(217,119,6,0.12); }
+    .verdict-banner.grey .verdict-icon { background: rgba(148,163,184,0.18); }
+
+    .verdict-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px; font-weight: 800;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+    .verdict-banner.red .verdict-text h2 { color: var(--danger); }
+    .verdict-banner.green .verdict-text h2 { color: var(--success); }
+    .verdict-banner.orange .verdict-text h2 { color: var(--warning); }
+    .verdict-banner.grey .verdict-text h2 { color: var(--text-muted); }
+    .verdict-text p { font-size: 15px; color: var(--text-muted); }
+
+    .section-card {
+      background: var(--surface);
+      border-radius: 28px;
+      border: 1px solid rgba(226,232,240,0.9);
+      margin-bottom: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .results-grid {
+      display: flex;
+      gap: 24px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+    .results-primary {
+      flex: 1 1 0;
+      min-width: 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .results-side {
+      width: min(340px, 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    @media (max-width: 880px) {
+      .results-grid { flex-direction: column; }
+      .results-side { width: 100%; }
+    }
+    .section-header {
+      padding: 20px 28px;
+      border-bottom: 1px solid rgba(226,232,240,0.95);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .section-header h3 {
+      font-size: 14px; font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .section-count {
+      background: var(--accent);
+      color: var(--surface);
+      border-radius: 999px;
+      padding: 4px 11px;
+      font-size: 11px; font-weight: 700;
+    }
+    .section-tagline {
+      margin-left: auto;
+      color: rgba(255,255,255,0.85);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+    .section-header.section-header-strong {
+      background: linear-gradient(135deg, rgba(79,70,229,0.93), rgba(6,182,212,0.92));
+      color: var(--surface);
+      border-bottom: none;
+    }
+    .section-header.section-header-strong h3 { color: var(--surface); }
+    .section-header.section-header-strong .section-count { background: rgba(255,255,255,0.22); color: var(--surface); border: 1px solid rgba(255,255,255,0.26); }
+
+    .feature-section,
+    .about-section {
+      margin-top: 48px;
+      padding: 0 0 0 0;
+    }
+    .feature-title,
+    .about-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    body.dark .feature-title,
+    body.dark .about-title {
+      color: var(--surface);
+    }
+    .feature-grid,
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .feature-card,
+    .about-card {
+      background: var(--surface);
+      border: 1px solid rgba(226,232,240,0.95);
+      border-radius: 26px;
+      padding: 28px 24px;
+      box-shadow: var(--shadow-sm);
+      color: var(--text);
+    }
+    .profile-card {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+    .about-photo {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 28px;
+      border: 1px solid rgba(226,232,240,0.95);
+      box-shadow: var(--shadow-sm);
+    }
+    .profile-card h3 {
+      margin-top: 0;
+    }
+    @media (max-width: 720px) {
+      .profile-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .profile-card .about-photo {
+        margin: 0 auto;
+      }
+    }
+    body.dark .feature-card,
+    body.dark .about-card {
+      background: var(--surface-soft);
+      border-color: rgba(71,85,105,0.65);
+    }
+    .feature-card h3,
+    .about-card h3 {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .feature-card p,
+    .about-card p {
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
+    body.dark .feature-card p,
+    body.dark .about-card p {
+      color: var(--text-soft);
+    }
+    .about-badge {
+      display: inline-flex;
+      padding: 6px 12px;
+      background: rgba(63,77,95,0.12);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    body.dark .about-badge {
+      background: rgba(125,211,252,0.14);
+      color: var(--surface);
+    }
+    .about-values ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 12px;
+    }
+    .about-values li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 12px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .about-values li::before {
+      content: '•';
+      position: absolute;
+      left: 0;
+      top: 1px;
+      color: var(--accent);
+      font-size: 18px;
+      line-height: 1.2;
+    }
+    body.dark .about-values li::before {
+      color: var(--accent-2);
+    }
+
+    .fc-item {
+      padding: 22px 28px;
+      border-bottom: 1px solid rgba(226,232,240,0.9);
+      transition: background 0.2s;
+    }
+    .fc-item:last-child { border-bottom: none; }
+    .fc-item:hover { background: rgba(249,250,255,0.9); }
+
+    .fc-top {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; gap: 16px;
+      margin-bottom: 12px;
+    }
+    .fc-claim { font-size: 15px; font-weight: 600; color: var(--text); line-height: 1.6; flex: 1; }
+
+    .rating-badge {
+      display: inline-block;
+      padding: 5px 12px; border-radius: 999px;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 0.02em; white-space: nowrap; flex-shrink: 0;
+    }
+    .rating-false { background: var(--danger-bg); color: var(--danger); }
+    .rating-true { background: var(--success-bg); color: var(--success); }
+    .rating-mixed { background: var(--warning-bg); color: var(--warning); }
+    .rating-other { background: rgba(226,232,240,0.8); color: var(--text-muted); }
+
+    .fc-meta {
+      display: flex; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+      font-size: 13px; color: var(--text-soft);
+    }
+    .fc-source-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 12px; font-weight: 700;
+      padding: 6px 12px;
+      border: 1px solid rgba(79,70,229,0.16);
+      border-radius: 12px;
+      transition: all 0.2s;
+      margin-left: auto;
+    }
+    .fc-source-link:hover { background: rgba(79,70,229,0.08); color: var(--accent-2); border-color: rgba(79,70,229,0.24); }
+
+    .news-item {
+      padding: 20px 28px;
+      border-bottom: 1px solid rgba(226,232,240,0.9);
+      display: flex; gap: 18px; align-items: flex-start;
+      transition: background 0.2s;
+    }
+    .news-item:last-child { border-bottom: none; }
+    .news-item:hover { background: rgba(249,250,255,0.9); }
+    .news-index {
+      width: 30px; height: 30px;
+      background: rgba(79,70,229,0.08); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: var(--accent);
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .news-content { flex: 1; }
+    .news-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 6px; line-height: 1.5; }
+    .news-source { font-size: 12px; color: var(--text-soft); margin-bottom: 8px; }
+    .news-link {
+      font-size: 12px; font-weight: 700; color: var(--accent);
+      text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+    }
+    .news-link:hover { text-decoration: underline; }
+
+    .empty-state {
+      padding: 34px; text-align: center;
+      color: var(--text-soft); font-size: 14px; line-height: 1.75;
+    }
+    .empty-state .icon { font-size: 34px; margin-bottom: 10px; }
+
+    .error-msg {
+      background: var(--danger-bg);
+      border: 1px solid rgba(220,38,38,0.18);
+      border-radius: var(--radius-sm);
+      padding: 14px 18px;
+      font-size: 13px; color: var(--danger);
+      margin: 12px 0;
+    }
+
+    .how-section {
+      margin-top: 48px; padding-top: 40px;
+      border-top: 1px solid rgba(226,232,240,0.95);
+    }
+    .section-target {
+      scroll-margin-top: 96px;
+    }
+    .how-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 26px; font-weight: 800;
+      color: var(--text);
+      margin-bottom: 26px; text-align: center;
+    }
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+    .how-card {
+      background: var(--surface);
+      border: 1px solid rgba(226,232,240,0.95);
+      border-radius: 24px;
+      padding: 28px 24px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .how-num {
+      width: 40px; height: 40px;
+      background: var(--accent);
+      color: var(--surface);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700;
+      margin: 0 auto 14px;
+    }
+    .how-card h4 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+    .how-card p  { font-size: 14px; color: var(--text-soft); line-height: 1.7; }
+
+    footer {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: rgba(255,255,255,0.75);
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 13px; line-height: 1.75;
+    }
+    footer strong { color: rgba(255,255,255,0.92); }
+
+    @media (max-width: 720px) {
+      .input-card { padding: 28px 20px; }
+      .input-row { flex-wrap: wrap; }
+      .btn-verify { width: 100%; justify-content: center; }
+      .fc-top { flex-direction: column; }
+      .verdict-banner { flex-direction: column; text-align: center; }
+      .logo-tagline { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <img src="logo.png" alt="FableWall Logo" style="width:38px;height:38px;border-radius:8px;object-fit:cover;flex-shrink:0;" />
+      <div class="brand-text">
+        <span class="logo-text">FableWall</span>
+        <span class="logo-tagline">Fake News Detection Platform</span>
+      </div>
+    </div>
+
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="#verify">Verify</a>
+      <a href="#how">How it works</a>
+      <a href="#why">Why FableWall</a>
+      <a href="#about">About the creator</a>
+    </nav>
+
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode"><span>🌙</span></button>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-badge">Verified fact-checks, local model insights, and clear guidance</div>
+  <h1>Verify news fast and trust the result.</h1>
+  <p>Paste a headline, claim, or social media post. FableWall compares it to verified fact-checks, trusted sources, and local evidence so you can decide what is true without the noise.</p>
+  <div class="hero-pill-list">
+    <span class="hero-pill">Trusted evidence</span>
+    <span class="hero-pill">Quick, clear results</span>
+    <span class="hero-pill">Designed for everyday users</span>
+  </div>
+</div>
+
+<main>
+  <div class="input-card section-target" id="verify">
+    <label class="input-label" for="claim-input">News Headline or Claim</label>
+    <textarea
+      id="claim-input"
+      placeholder="Type or paste any news claim you want to verify... Must not be less than 15 characters"
+      maxlength="500"
+    ></textarea>
+    <div class="input-row">
+      <span class="char-count" id="char-count">0 / 500 characters</span>
+      <button class="btn-clear" id="btn-clear">Clear</button>
+      <button class="btn-verify" id="btn-verify">
+        <span>Check Claim</span>
+        <span>&#8594;</span>
+      </button>
+    </div>
+    <div id="input-error-msg" style="display:none;margin-top:12px;padding:12px 16px;background:#fff5f5;border:1px solid rgba(184,50,50,0.3);border-radius:8px;font-size:13px;color:#b83232;"></div>
+  </div>
+
+  <div class="spinner-wrap" id="spinner">
+    <div class="spinner"></div>
+    <p class="spinner-text">Running...</p>
+  </div>
+
+  <div id="results" class="results-grid">
+    <div class="results-primary">
+      <div id="verdict-banner" class="verdict-banner grey">
+        <div class="verdict-icon" id="verdict-icon">&#10067;</div>
+        <div class="verdict-text">
+          <h2 id="verdict-label">Checking...</h2>
+          <p id="verdict-desc"></p>
+        </div>
+      </div>
+
+      <div class="section-card" id="ai-card" style="display:none;">
+        <div class="section-header section-header-strong">
+          <h3>Summary</h3>
+          <span class="section-tagline">Summarises retrieved evidence only</span>
+        </div>
+        <div id="ai-summary-text" style="padding:20px 28px;font-size:14px;line-height:1.75;color:var(--grey-700);"></div>
+      </div>
+
+      <div class="section-card" id="fc-card">
+        <div class="section-header">
+          <h3>Fact-Check Results</h3>
+          <span class="section-count" id="fc-count">0</span>
+        </div>
+        <div id="fc-list"></div>
+      </div>
+
+      <div class="section-card" id="news-card">
+        <div class="section-header">
+          <h3>News Coverage</h3>
+          <span class="section-count" id="news-count">0</span>
+        </div>
+        <div id="news-list"></div>
+      </div>
+    </div>
+
+    <aside class="results-side">
+      <div class="section-card" id="ml-card" style="display:none;">
+        <div class="section-header section-header-strong">
+          <h3>ML Analysis</h3>
+          <!-- <span class="section-tagline">Powered by Machine Learning</span> -->
+        </div>
+        <div id="ml-content" style="padding:20px 28px;display:flex;flex-wrap:wrap;gap:16px;"></div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="how-section section-target" id="how">
+    <h2 class="how-title">How FableWall Works</h2>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-num">1</div>
+        <h4>You Submit a Claim</h4>
+        <p>Paste any news headline or statement you have seen online or received on social media.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">2</div>
+        <h4>Machine Learning Analysis</h4>
+        <p>The system uses TF-IDF similarity matching and a Naive Bayes classifier trained on over 72,000 news articles to analyse the claim.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">3</div>
+        <h4>Fact-Check Database Search</h4>
+        <p>FableWall searches Google's Fact Check Tools database, which indexes thousands of verified fact-checks from credible organisations worldwide.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-num">4</div>
+        <h4>You See Real Evidence</h4>
+        <p>Results show actual verdicts from human fact-checkers with source links you can read yourself, not just an AI opinion.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-section section-target" id="why">
+    <h2 class="feature-title">Why FableWall?</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>Evidence first</h3>
+        <p>FableWall prioritises actual fact-check records and source links so decisions are based on verification, not guesswork.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Local claim memory</h3>
+        <p>Claims seeded from the local database help the app improve over time with relevant examples tailored to your context.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Fast results</h3>
+        <p>The platform returns a verdict quickly, with a clear summary and related news coverage that makes sense at a glance.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-section section-target" id="about">
+    <h2 class="about-title">About the creator</h2>
+    <div class="about-grid">
+      <article class="about-card profile-card">
+        <img src="dp.jpeg" alt="Photo of Taofeek Olamilekan" class="about-photo" />
+        <div>
+          <!-- <p class="about-badge">Created by Orlamzi</p> -->
+          <h3>Taofeek Olamilekan is the founder behind FableWall</h3>
+          <p>Taofeek is a final year Information Technology student at the University of Ilorin. He built FableWall to make verification faster, more transparent, and easier for students, journalists, curious readers, and everyday non-technical users.</p>
+          <p>FableWall combines Python, Flask, local machine learning, and verified fact-check evidence so users can check claims with clear reasoning, not just another internet opinion.</p>
+        </div>
+      </article>
+      <article class="about-card about-values">
+        <h3>What this project stands for</h3>
+        <ul>
+          <li>Evidence first: fact-checks before speculation</li>
+          <li>Clarity first: simple results for complex claims</li>
+          <li>Education first: built for learners, researchers, and the curious</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <strong>FableWall</strong>; Web-Based Fake News Detection Platform<br>
+  Powered by Orlamzi || &copy; 2026. All Rights reserved.<br>
+  Verdicts are sourced from independent fact-checking organisations via Google Fact Check Tools API.
+</footer>
+
+<script>
+  const API_BASE = "http://localhost:5000";
+
+  const claimInput = document.getElementById("claim-input");
+  const btnVerify  = document.getElementById("btn-verify");
+  const btnClear   = document.getElementById("btn-clear");
+  const charCount  = document.getElementById("char-count");
+  const spinner    = document.getElementById("spinner");
+  const results    = document.getElementById("results");
+  const errBox     = document.getElementById("input-error-msg");
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeIcon = themeToggle ? themeToggle.querySelector("span") : null;
+
+  const savedTheme = localStorage.getItem("theme") || "light";
+  applyTheme(savedTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      const current = document.body.classList.contains("dark") ? "dark" : "light";
+      applyTheme(current === "dark" ? "light" : "dark");
+    });
+  }
+
+  function applyTheme(theme) {
+    const isDark = theme === "dark";
+    document.body.classList.toggle("dark", isDark);
+    if (themeIcon) themeIcon.textContent = isDark ? "☀️" : "🌙";
+    if (themeToggle) themeToggle.setAttribute("aria-label", isDark ? "Switch to light mode" : "Switch to dark mode");
+    localStorage.setItem("theme", theme);
+  }
+
+  claimInput.addEventListener("input", () => {
+    charCount.textContent = claimInput.value.length + " / 500 characters";
+    errBox.style.display = "none";
+  });
+
+  btnClear.addEventListener("click", () => {
+    claimInput.value = "";
+    charCount.textContent = "0 / 500 characters";
+    results.classList.remove("active");
+    spinner.classList.remove("active");
+    errBox.style.display = "none";
+  });
+
+  btnVerify.addEventListener("click", async () => {
+    const claim = claimInput.value.trim();
+    if (!claim) {
+      showInputError("Please paste a news headline or claim before clicking Check Claim.");
+      return;
+    }
+
+    spinner.classList.add("active");
+    results.classList.remove("active");
+    errBox.style.display = "none";
+    btnVerify.disabled = true;
+    btnVerify.innerHTML = "<span>Checking...</span>";
+
+    try {
+      const resp = await fetch(API_BASE + "/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ claim })
+      });
+
+      const data = await resp.json();
+
+      if (!resp.ok) {
+        showInputError(data.error || "Something went wrong. Please try again.");
+        return;
+      }
+
+      renderResults(data);
+
+    } catch (err) {
+      showInputError("Could not reach the FableWall server. Make sure the backend is running on localhost:5000.");
+    } finally {
+      spinner.classList.remove("active");
+      btnVerify.disabled = false;
+      btnVerify.innerHTML = "<span>Check Claim</span><span>&#8594;</span>";
+    }
+  });
+
+  function showInputError(message) {
+    errBox.textContent = "Notice: " + message;
+    errBox.style.display = "block";
+  }
+
+  function renderResults(data) {
+    renderVerdict(data.credibility);
+    renderMLInsights(data.local_matches || [], data.nb_prediction, data.nb_confidence);
+    renderAISummary(data.ai_summary, data.ai_error);
+    renderFactChecks(data.fact_checks, data.local_matches || [], data.fact_check_error);
+    renderNews(data.news_coverage, data.news_error);
+    results.classList.add("active");
+    results.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  function renderVerdict(cred) {
+    const banner = document.getElementById("verdict-banner");
+    const icon   = document.getElementById("verdict-icon");
+    const label  = document.getElementById("verdict-label");
+    const desc   = document.getElementById("verdict-desc");
+    const icons  = { red: "&#10060;", green: "&#9989;", orange: "&#9888;&#65039;", grey: "&#128269;" };
+    banner.className = "verdict-banner " + cred.color;
+    icon.innerHTML   = icons[cred.color] || "&#128269;";
+    label.textContent = cred.label;
+    desc.textContent  = cred.description;
+  }
+
+  function renderMLInsights(localMatches, nbPrediction, nbConfidence) {
+    const card    = document.getElementById("ml-card");
+    const content = document.getElementById("ml-content");
+    let html = "";
+
+    if (localMatches && localMatches.length > 0) {
+      localMatches.forEach(function(m, i) {
+        const score    = m.similarity_score || 0;
+        const pct      = Math.round(score * 100);
+        const barColor = pct >= 70 ? "var(--green)" : pct >= 40 ? "var(--orange)" : "var(--grey-500)";
+        html += '<div style="flex:1;min-width:220px;background:var(--grey-100);border-radius:10px;padding:16px;">'
+          + '<div style="font-size:11px;font-weight:700;color:var(--brown-dark);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:8px;">Content Match Score</div>'
+          + '<div style="font-size:28px;font-weight:700;color:' + barColor + ';margin-bottom:6px;">' + pct + '%</div>'
+          + '<div style="background:var(--grey-200);border-radius:100px;height:6px;margin-bottom:8px;">'
+          + '<div style="background:' + barColor + ';width:' + pct + '%;height:6px;border-radius:100px;"></div></div>'
+          + '<div style="font-size:12px;color:var(--grey-500);">Match ' + (i+1) + ': &ldquo;' + escHtml((m.claim_text || "").substring(0, 60)) + ((m.claim_text || "").length > 60 ? "..." : "") + '&rdquo;</div>'
+          + '</div>';
+      });
+    }
+
+    if (nbPrediction && nbConfidence) {
+      const nbColor = nbPrediction === "Likely Genuine" ? "var(--green)" : "var(--red)";
+      html += '<div style="flex:1;min-width:220px;background:var(--grey-100);border-radius:10px;padding:16px;">'
+        + '<div style="font-size:11px;font-weight:700;color:var(--brown-dark);letter-spacing:0.5px;text-transform:uppercase;margin-bottom:8px;">Detection Confidence</div>'
+        + '<div style="font-size:28px;font-weight:700;color:' + nbColor + ';margin-bottom:6px;">' + nbConfidence + '%</div>'
+        + '<div style="background:var(--grey-200);border-radius:100px;height:6px;margin-bottom:8px;">'
+        + '<div style="background:' + nbColor + ';width:' + nbConfidence + '%;height:6px;border-radius:100px;"></div></div>'
+        + '<div style="font-size:12px;color:var(--grey-500);">Verdict: <strong>' + escHtml(nbPrediction) + '</strong> based on learned news patterns</div>'
+        + '</div>';
+    }
+
+    if (html) {
+      content.innerHTML = html;
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  }
+
+  function renderAISummary(summary, error) {
+    const card = document.getElementById("ai-card");
+    const text = document.getElementById("ai-summary-text");
+    if (summary) {
+      text.textContent = summary;
+      card.style.display = "block";
+    } else if (error && error !== "No evidence available to summarise.") {
+      text.innerHTML = '<em style="color:var(--grey-500);">' + escHtml(error) + '</em>';
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  }
+
+  function getRatingClass(rating) {
+    const r = rating.toLowerCase();
+    if (["false","pants on fire","mostly false","incorrect","misleading","fabricated","fake","wrong","debunked"].some(function(k){ return r.includes(k); })) return "rating-false";
+    if (["true","mostly true","correct","accurate","verified","confirmed"].some(function(k){ return r.includes(k); })) return "rating-true";
+    if (["mixed","disputed","half","partially"].some(function(k){ return r.includes(k); })) return "rating-mixed";
+    return "rating-other";
+  }
+
+  function formatDate(dateStr) {
+    if (!dateStr) return "";
+    try { return new Date(dateStr).toLocaleDateString("en-GB", { year: "numeric", month: "short", day: "numeric" }); }
+    catch(e) { return ""; }
+  }
+
+  function renderFactChecks(checks, localMatches, error) {
+    const list  = document.getElementById("fc-list");
+    const count = document.getElementById("fc-count");
+    const hasLocal  = localMatches && localMatches.length > 0;
+    const hasGoogle = checks && checks.length > 0;
+    count.textContent = (localMatches.length || 0) + (checks.length || 0);
+
+    if (error && !hasLocal) {
+      list.innerHTML = '<div class="error-msg">Could not retrieve fact-check data: ' + escHtml(error) + '</div>';
+      return;
+    }
+
+    if (!hasLocal && !hasGoogle) {
+      list.innerHTML = '<div class="empty-state"><div class="icon">&#128196;</div><strong>No matching fact-checks found.</strong><br>This claim may not have been formally checked yet. Try rephrasing the headline.</div>';
+      return;
+    }
+
+    let html = "";
+
+    if (hasLocal) {
+      html += '<div style="padding:10px 28px 6px;font-size:11px;font-weight:700;color:var(--green);letter-spacing:0.6px;text-transform:uppercase;background:var(--green-bg);border-bottom:1px solid var(--grey-200);">FableWall Local Database</div>';
+      html += localMatches.map(function(fc) {
+        return '<div class="fc-item">'
+          + '<div class="fc-top"><div class="fc-claim">&ldquo;' + escHtml(fc.claim_text) + '&rdquo;</div>'
+          + '<span class="rating-badge ' + getRatingClass(fc.rating) + '">' + escHtml(fc.rating) + '</span></div>'
+          + '<div class="fc-meta">'
+          + (fc.publisher ? '<span>' + escHtml(fc.publisher) + '</span>' : '')
+          + (fc.title ? '<span style="font-style:italic;color:var(--grey-700);">' + escHtml(fc.title) + '</span>' : '')
+          + (fc.url && fc.url !== "#" && fc.url !== "" ? '<a class="fc-source-link" href="' + escHtml(fc.url) + '" target="_blank" rel="noopener">View Source</a>' : '')
+          + '</div></div>';
+      }).join("");
+    }
+
+    if (hasGoogle) {
+      const googleLabel = hasLocal ? "Older References from Google Fact Check Database (may be outdated)" : "From Google Fact Check Database";
+      html += '<div style="padding:10px 28px 6px;font-size:11px;font-weight:700;color:var(--grey-500);letter-spacing:0.6px;text-transform:uppercase;background:var(--grey-100);border-top:2px solid var(--grey-200);">' + googleLabel + '</div>';
+      html += checks.map(function(fc) {
+        return '<div class="fc-item">'
+          + '<div class="fc-top"><div class="fc-claim">&ldquo;' + escHtml(fc.claim_text) + '&rdquo;</div>'
+          + '<span class="rating-badge ' + getRatingClass(fc.rating) + '">' + escHtml(fc.rating) + '</span></div>'
+          + '<div class="fc-meta">'
+          + (fc.publisher ? '<span>' + escHtml(fc.publisher) + '</span>' : '')
+          + (fc.claimant  ? '<span>' + escHtml(fc.claimant)  + '</span>' : '')
+          + (fc.claim_date ? '<span>' + escHtml(formatDate(fc.claim_date)) + '</span>' : '')
+          + (fc.url && fc.url !== "#" ? '<a class="fc-source-link" href="' + escHtml(fc.url) + '" target="_blank" rel="noopener">View Source</a>' : '')
+          + '</div></div>';
+      }).join("");
+    }
+
+    list.innerHTML = html;
+  }
+
+  function renderNews(articles, error) {
+    const list  = document.getElementById("news-list");
+    const count = document.getElementById("news-count");
+    count.textContent = articles ? articles.length : 0;
+
+    if (error) {
+      list.innerHTML = '<div class="error-msg">News coverage unavailable: ' + escHtml(error) + '</div>';
+      return;
+    }
+
+    if (!articles || !articles.length) {
+      list.innerHTML = '<div class="empty-state"><div class="icon">&#128240;</div><strong>No related news articles found.</strong><br>This claim may not have been covered by major outlets in the database.</div>';
+      return;
+    }
+
+    list.innerHTML = articles.map(function(a, i) {
+      return '<div class="news-item">'
+        + '<div class="news-index">' + (i+1) + '</div>'
+        + '<div class="news-content">'
+        + '<div class="news-title">' + escHtml(a.title || "Untitled") + '</div>'
+        + '<div class="news-source">' + escHtml(a.source) + (a.published_at ? ' &middot; ' + escHtml(formatDate(a.published_at)) : '') + '</div>'
+        + (a.url && a.url !== "#" ? '<a class="news-link" href="' + escHtml(a.url) + '" target="_blank" rel="noopener">Read article</a>' : '')
+        + '</div></div>';
+    }).join("");
+  }
+
+  function escHtml(str) {
+    return String(str || "")
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;");
+  }
+
+  claimInput.addEventListener("keydown", function(e) {
+    if ((e.ctrlKey || e.metaKey) && e.key === "Enter") btnVerify.click();
+  });
+</script>
+</body>
+</html>

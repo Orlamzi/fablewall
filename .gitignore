@@ -1,0 +1,6 @@
+.env
+__pycache__/
+*.pkl
+WELFake_Dataset.csv
+*.pyc
+.DS_Store

@@ -1,0 +1,446 @@
+{
+  "claims": [
+    {
+      "keywords": [
+        "unilorin",
+        "cng",
+        "bus",
+        "buses",
+        "transportation"
+      ],
+      "claim_text": "University of Ilorin has purchased CNG buses for students",
+      "verdict": "Unverified",
+      "rating": "Unverified — No purchase confirmed at time of circulation",
+      "explanation": "The University of Ilorin management clarified that while plans to acquire CNG buses exist, no purchase had been made at the time this claim circulated among students in 2025.",
+      "source": "University of Ilorin Management Statement",
+      "url": "",
+      "date_added": "2025-01-01"
+    },
+    {
+      "keywords": [
+        "buhari",
+        "dead",
+        "died",
+        "death",
+        "president buhari",
+        "muhammadu"
+      ],
+      "claim_text": "Former Nigerian President Muhammadu Buhari is dead",
+      "verdict": "Likely True",
+      "rating": "Confirmed — Muhammadu Buhari passed away in July 2025",
+      "explanation": "Former Nigerian President Muhammadu Buhari, who served from 2015 to 2023, passed away on July 13 2025 in London at the age of 82. Claims of his death circulating online are therefore accurate.",
+      "source": "Al Jazeera, BBC News, Channels Television",
+      "url": "https://www.aljazeera.com/news/2025/7/13/nigerias-former-president-muhammadu-buhari-dies-in-london-aged-82",
+      "date_added": "2025-07-13"
+    },
+    {
+      "keywords": [
+        "tinubu",
+        "certificate",
+        "chicago",
+        "degree",
+        "fake",
+        "school",
+        "university"
+      ],
+      "claim_text": "Tinubu's Chicago State University certificate is fake",
+      "verdict": "Likely False",
+      "rating": "Disputed — Certificate authenticity contested but not conclusively disproven",
+      "explanation": "Claims about President Tinubu's academic credentials from Chicago State University have been widely circulated but remain legally contested. Court proceedings have not produced conclusive evidence of forgery.",
+      "source": "Multiple Nigerian fact-checkers",
+      "url": "",
+      "date_added": "2025-01-01"
+    },
+    {
+      "keywords": [
+        "nigeria",
+        "inflation",
+        "rise",
+        "economy",
+        "2024",
+        "percent"
+      ],
+      "claim_text": "Nigeria's inflation rate rose above 30% in 2024",
+      "verdict": "Likely True",
+      "rating": "Confirmed — NBS data supports this claim",
+      "explanation": "The National Bureau of Statistics confirmed that Nigeria's inflation rate exceeded 30% in 2024, reaching its highest level in decades due to fuel subsidy removal and currency devaluation.",
+      "source": "National Bureau of Statistics Nigeria",
+      "url": "https://nigerianstat.gov.ng",
+      "date_added": "2025-01-01"
+    },
+    {
+      "keywords": [
+        "simi",
+        "deja",
+        "dead",
+        "died",
+        "daughter",
+        "adekunle gold"
+      ],
+      "claim_text": "Simi and Adekunle Gold's daughter Deja is dead",
+      "verdict": "Likely False",
+      "rating": "False — Deja is alive. The claim was fabricated by a social media user",
+      "explanation": "A Twitter user with the handle @Swanky0001 falsely claimed that Deja, the daughter of musicians Simi and Adekunle Gold, had died. The claim was completely false. Simi and Adekunle Gold pursued legal action and won a defamation case against the user in 2024.",
+      "source": "Multiple verified Nigerian entertainment news outlets",
+      "url": "",
+      "date_added": "2024-01-01"
+    },
+    {
+      "keywords": [
+        "wizkid",
+        "hiv",
+        "aids",
+        "sick",
+        "disease",
+        "health",
+        "positive"
+      ],
+      "claim_text": "Wizkid has HIV",
+      "verdict": "Likely False",
+      "rating": "False — The claim was based on an AI-generated image and has no factual basis",
+      "explanation": "A social media user posted an AI-generated image of musician Wizkid alongside a caption claiming he had been battling HIV. The image was artificially created and the health claim has no factual basis whatsoever. Wizkid has not made any such disclosure and the post was widely condemned.",
+      "source": "Multiple verified Nigerian entertainment news outlets",
+      "url": "",
+      "date_added": "2025-01-01"
+    },
+    {
+      "keywords": [
+        "peter obi",
+        "arrested",
+        "efcc",
+        "detained",
+        "prison"
+      ],
+      "claim_text": "Peter Obi has been arrested by the EFCC",
+      "verdict": "Likely False",
+      "rating": "False — No credible report of Peter Obi being arrested by the EFCC exists",
+      "explanation": "Claims that Labour Party presidential candidate Peter Obi was arrested by the Economic and Financial Crimes Commission have circulated repeatedly on social media but have never been confirmed by any credible news outlet or official statement.",
+      "source": "Multiple verified Nigerian news outlets",
+      "url": "",
+      "date_added": "2025-01-01"
+    },
+    {
+      "keywords": [
+        "dangote",
+        "refinery",
+        "fuel",
+        "petrol",
+        "price",
+        "cheap",
+        "naira"
+      ],
+      "claim_text": "Dangote refinery has crashed fuel prices to 200 naira per litre",
+      "verdict": "Likely False",
+      "rating": "Misleading — Dangote refinery is operational but petrol has not dropped to 200 naira",
+      "explanation": "While the Dangote Petroleum Refinery became operational in 2024 and has contributed to some reduction in fuel prices, claims that petrol dropped to 200 naira per litre are false. Prices remained significantly higher than this figure.",
+      "source": "NNPC, Punch Newspapers, Vanguard",
+      "url": "",
+      "date_added": "2025-01-01"
+    },
+    {
+      "keywords": [
+        "naira",
+        "dollar",
+        "exchange",
+        "rate",
+        "crashed",
+        "1000",
+        "2000"
+      ],
+      "claim_text": "The naira has crashed to 2000 per dollar",
+      "verdict": "Unverified",
+      "rating": "Unverified — Exchange rate fluctuates and should be checked against current CBN rates",
+      "explanation": "The naira to dollar exchange rate has been highly volatile since the unification of exchange rates in 2023. Claims about specific exchange rate figures should always be verified against the Central Bank of Nigeria official rate as the situation changes frequently.",
+      "source": "Central Bank of Nigeria",
+      "url": "https://www.cbn.gov.ng",
+      "date_added": "2025-01-01"
+    },
+    {
+      "keywords": [
+        "asuu",
+        "strike",
+        "university",
+        "lecturers",
+        "resumption",
+        "2024",
+        "2025"
+      ],
+      "claim_text": "ASUU has declared a new strike in 2025",
+      "verdict": "Unverified",
+      "rating": "Unverified — No confirmed ASUU strike declaration for 2025 at time of entry",
+      "explanation": "Claims of a new ASUU strike in 2025 have circulated on social media but have not been confirmed by any official ASUU statement or credible news outlet as of the date this entry was added.",
+      "source": "FableWall Local Database",
+      "url": "",
+      "date_added": "2025-01-01"
+    },
+    {
+      "keywords": [
+        "tinubu",
+        "dead",
+        "died",
+        "death",
+        "president tinubu",
+        "bola"
+      ],
+      "claim_text": "President Bola Tinubu is dead",
+      "verdict": "Likely False",
+      "rating": "False — President Tinubu is alive as of the date this entry was added",
+      "explanation": "Claims that President Bola Ahmed Tinubu has died have circulated repeatedly on Nigerian social media. As of July 2025, President Tinubu is alive and continues to serve as President of Nigeria. These claims are false.",
+      "source": "Aso Rock Villa Official Statements, State House Nigeria",
+      "url": "https://statehouse.gov.ng",
+      "date_added": "2025-07-01"
+    },
+    {
+      "keywords": [
+        "nigeria",
+        "world cup",
+        "2026",
+        "qualified",
+        "qualification"
+      ],
+      "claim_text": "Nigeria has qualified for the 2026 World Cup",
+      "verdict": "Likely True",
+      "rating": "Confirmed — Super Eagles qualified for the 2026 FIFA World Cup",
+      "explanation": "The Nigerian national football team, the Super Eagles, successfully qualified for the 2026 FIFA World Cup to be hosted in the United States, Canada, and Mexico.",
+      "source": "CAF, FIFA, NFF Official",
+      "url": "https://www.fifa.com",
+      "date_added": "2025-01-01"
+    },
+    {
+      "keywords": [
+        "covid",
+        "vaccine",
+        "chip",
+        "microchip",
+        "5g",
+        "bill gates",
+        "tracking"
+      ],
+      "claim_text": "COVID-19 vaccines contain microchips for tracking people",
+      "verdict": "Likely False",
+      "rating": "False — Thoroughly debunked by WHO, CDC, and multiple independent fact-checkers worldwide",
+      "explanation": "The claim that COVID-19 vaccines contain microchips for tracking people is completely false and has been thoroughly debunked by the World Health Organization, the CDC, and numerous independent fact-checkers. Vaccines contain biological and chemical components only.",
+      "source": "WHO, CDC, Snopes, PolitiFact",
+      "url": "https://www.who.int",
+      "date_added": "2025-01-01"
+    },
+    {
+      "keywords": [
+        "5g",
+        "coronavirus",
+        "covid",
+        "cause",
+        "radiation",
+        "tower"
+      ],
+      "claim_text": "5G causes coronavirus",
+      "verdict": "Likely False",
+      "rating": "False — 5G technology has no connection to coronavirus and the claim is scientifically impossible",
+      "explanation": "The claim that 5G technology causes or spreads COVID-19 is completely false. Viruses cannot travel on radio waves. COVID-19 is caused by the SARS-CoV-2 virus and spreads through respiratory droplets. This claim has been debunked by the WHO and multiple health authorities.",
+      "source": "WHO, Full Fact, Africa Check",
+      "url": "https://www.who.int",
+      "date_added": "2025-01-01"
+    },
+    {
+      "keywords": [
+        "earth",
+        "flat",
+        "globe",
+        "nasa",
+        "space",
+        "round"
+      ],
+      "claim_text": "The earth is flat",
+      "verdict": "Likely False",
+      "rating": "False — The earth is an oblate spheroid. This is established scientific fact supported by centuries of evidence",
+      "explanation": "The claim that the earth is flat is false. The earth is an oblate spheroid, meaning it is roughly spherical but slightly flattened at the poles. This has been confirmed through centuries of scientific observation, satellite imagery, space exploration, and physics.",
+      "source": "NASA, European Space Agency, Scientific consensus",
+      "url": "https://www.nasa.gov",
+      "date_added": "2025-01-01"
+    },
+    {
+      "keywords": [
+        "obi cubana",
+        "arrested",
+        "efcc",
+        "money laundering",
+        "detained"
+      ],
+      "claim_text": "Obi Cubana has been arrested for money laundering",
+      "verdict": "Unverified",
+      "rating": "Previously investigated — Obi Cubana was invited by EFCC in 2021 but no conviction followed",
+      "explanation": "Obi Cubana was invited by the EFCC in 2021 for questioning following a viral video of excessive cash spraying at his mother's burial. He was released after questioning and no charges were filed. Any new claims of arrest should be verified against current news sources.",
+      "source": "EFCC Official Statement 2021, Punch Newspapers",
+      "url": "",
+      "date_added": "2025-01-01"
+    },
+    {
+      "keywords": [
+        "atiku",
+        "elected",
+        "president",
+        "won",
+        "election",
+        "2023"
+      ],
+      "claim_text": "Atiku Abubakar won the 2023 Nigerian presidential election",
+      "verdict": "Likely False",
+      "rating": "False — Bola Tinubu was declared winner of the 2023 Nigerian presidential election by INEC",
+      "explanation": "The Independent National Electoral Commission declared Bola Ahmed Tinubu of the APC as the winner of the 2023 Nigerian presidential election. Atiku Abubakar of the PDP came second. Claims that Atiku won are false.",
+      "source": "INEC Official Result, Multiple Nigerian news outlets",
+      "url": "https://www.inec.gov.ng",
+      "date_added": "2025-01-01"
+    },
+    {
+      "keywords": [
+        "burna boy",
+        "grammy",
+        "won",
+        "award",
+        "2024",
+        "2025"
+      ],
+      "claim_text": "Burna Boy won the Grammy Award in 2025",
+      "verdict": "Unverified",
+      "rating": "Unverified — Check current Grammy records for confirmation",
+      "explanation": "Burna Boy won his first Grammy Award in 2021 for Best Global Music Album. Whether he won in 2025 should be verified against current Grammy Award records as this information changes annually.",
+      "source": "Recording Academy Grammy Awards",
+      "url": "https://www.grammy.com",
+      "date_added": "2025-01-01"
+    },
+    {
+      "keywords": [
+        "fuel",
+        "subsidy",
+        "removed",
+        "tinubu",
+        "petrol",
+        "expensive"
+      ],
+      "claim_text": "Tinubu removed fuel subsidy in Nigeria",
+      "verdict": "Likely True",
+      "rating": "Confirmed — President Tinubu announced the removal of fuel subsidy on May 29 2023 during his inauguration speech",
+      "explanation": "President Bola Tinubu announced the removal of the fuel subsidy during his inauguration speech on May 29 2023, stating that the subsidy is gone. This led to an immediate increase in petrol prices across Nigeria.",
+      "source": "State House Nigeria, NNPC, Multiple verified news outlets",
+      "url": "https://statehouse.gov.ng",
+      "date_added": "2025-01-01"
+    },
+    {
+      "keywords": [
+        "unilag",
+        "shut",
+        "closed",
+        "shutdown",
+        "strike",
+        "protest"
+      ],
+      "claim_text": "UNILAG has been shut down due to a strike",
+      "verdict": "Unverified",
+      "rating": "Unverified — No confirmed shutdown of University of Lagos at time of entry",
+      "explanation": "Claims about UNILAG shutdowns circulate periodically on Nigerian social media. This claim could not be confirmed at the time this entry was added. Users should verify against official UNILAG statements or credible Nigerian news outlets.",
+      "source": "FableWall Local Database",
+      "url": "https://www.unilag.edu.ng",
+      "date_added": "2025-01-01"
+    },
+    {
+      "keywords": [
+        "nigeria",
+        "twitter",
+        "banned",
+        "ban",
+        "social media",
+        "x"
+      ],
+      "claim_text": "Nigeria has banned Twitter",
+      "verdict": "Likely True",
+      "rating": "Confirmed - Nigeria banned Twitter in June 2021 and lifted the ban in January 2022.",
+      "explanation": "Confirmed - Nigeria banned Twitter in June 2021 after the platform deleted a tweet by the president. The ban lasted 7 months and was lifted in January 2022 after Twitter agreed to certain conditions.",
+      "source": "NCC, BBC News, Reuters",
+      "url": "https://www.bbc.com/news/world-africa-57368706",
+      "date_added": "2026-06-05"
+    },
+    {
+      "keywords": [
+        "nigeria",
+        "cryptocurrency",
+        "crypto",
+        "banned",
+        "bitcoin",
+        "cbn"
+      ],
+      "claim_text": "The Nigerian government has banned cryptocurrency",
+      "verdict": "Likely True",
+      "rating": "onfirmed — CBN restricted banks from facilitating crypto transactions in 2021",
+      "explanation": "The Central Bank of Nigeria issued a directive in February 2021 prohibiting banks and financial institutions from facilitating cryptocurrency transactions. The CBN later reversed this position in December 2023, allowing regulated crypto trading.",
+      "source": "Central Bank of Nigeria, Punch Newspapers",
+      "url": "https://www.cbn.gov.ng",
+      "date_added": "2026-06-05"
+    },
+    {
+      "keywords": [
+        "mohbad",
+        "murdered",
+        "killed",
+        "death",
+        "died",
+        "imole"
+      ],
+      "claim_text": "Mohbad was murdered",
+      "verdict": "Mixed or Disputed",
+      "rating": "Disputed — Cause of death remains officially unresolved",
+      "explanation": "Nigerian musician Mohbad died in September 2023. While widespread suspicion of foul play led to public protests and investigations, no official murder verdict has been reached. The case remains under investigation as of 2025.",
+      "source": "Nigeria Police Force, Punch Newspapers, Premium Times",
+      "url": "",
+      "date_added": "2026-06-05"
+    },
+    {
+      "keywords": [
+        "nigeria",
+        "population",
+        "250 million",
+        "census",
+        "people"
+      ],
+      "claim_text": "Nigeria's population has reached 250 million",
+      "verdict": "Unverified",
+      "rating": "Unverified — Population estimates vary and no official census confirmed this figure",
+      "explanation": "Nigeria is widely regarded as the most populous country in Africa but the exact population figure is disputed. The last credible Nigerian census was conducted in 2006. Various projections estimate the population between 200 and 230 million as of 2025 but 250 million has not been officially confirmed.",
+      "source": "NPC Nigeria, World Bank",
+      "url": "https://www.worldbank.org",
+      "date_added": "2026-06-05"
+    },
+    {
+      "keywords": [
+        "naira",
+        "dollar",
+        "stronger",
+        "exchange rate",
+        "currency"
+      ],
+      "claim_text": "The naira is now stronger than the dollar",
+      "verdict": "Likely False",
+      "rating": "False — The naira has never been stronger than the US dollar in modern history",
+      "explanation": "The claim that the Nigerian naira is stronger than the US dollar is false. The naira has been consistently weaker than the dollar and experienced significant devaluation following the removal of fuel subsidies and exchange rate unification in 2023.",
+      "source": "Central Bank of Nigeria, Bloomberg",
+      "url": "https://www.cbn.gov.ng",
+      "date_added": "2026-06-05"
+    },
+    {
+      "keywords": [
+        "dangote",
+        "elon musk",
+        "richer",
+        "richest",
+        "wealth",
+        "billionaire"
+      ],
+      "claim_text": "Dangote is now richer than Elon Musk",
+      "verdict": "Likely False",
+      "rating": "False — Elon Musk remains significantly wealthier than Aliko Dangote",
+      "explanation": "While Aliko Dangote is consistently ranked as the richest person in Africa, his net worth remains significantly lower than that of Elon Musk who is regularly ranked as one of the richest people in the world. This claim is false.",
+      "source": "Forbes Billionaires List, Bloomberg Billionaires Index",
+      "url": "https://www.forbes.com",
+      "date_added": "2026-06-05"
+    }
+  ]
+}
