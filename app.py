@@ -285,14 +285,14 @@ def determine_credibility(fact_checks, local_matches, nb_prediction=None, nb_con
         elif false_count > 0 or true_count > 0:
             return {"label": "Mixed or Disputed", "description": "Fact-checkers have given this claim conflicting or mixed ratings.",             "color": "orange"}
 
-    if nb_prediction and nb_confidence:
+    if nb_prediction and nb_confidence and float(nb_confidence) >= 70.0:
         return {
             "label":       nb_prediction,
             "description": f"No fact-check records found. Naive Bayes classifier predicted {nb_prediction} with {nb_confidence}% confidence based on text patterns.",
             "color":       "green" if nb_prediction == "Likely Genuine" else "red"
         }
 
-    return {"label": "Unverified", "description": "No fact-checks found for this claim in any database.", "color": "grey"}
+    return {"label": "Unverified", "description": "No fact-check records were found for this claim in any database. This does not mean the claim is false. It may not yet have been formally investigated.", "color": "grey"}
 
 
 def generate_ai_summary(claim, verdict_label, fact_checks, local_matches):
@@ -736,4 +736,4 @@ connect_mongodb()
 train_ml_models()
 
 if __name__ == "__main__":
-  app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)), debug=False)
+    app.run(debug=True, port=5000)
