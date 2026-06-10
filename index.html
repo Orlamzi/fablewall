@@ -243,7 +243,7 @@
       font-family: 'Playfair Display', serif;
       font-size: clamp(32px, 5vw, 58px);
       font-weight: 900;
-      color: var(--surface);
+      color: var(--text);
       line-height: 1.05;
       margin-bottom: 18px;
     }
@@ -509,8 +509,19 @@
     }
     body.dark .feature-title,
     body.dark .about-title {
-      color: var(--surface);
+      color: var(--text);
     }
+
+    /* Ensure components that used var(--surface) for text are readable in dark mode */
+    body.dark .logo-mark { color: var(--text) !important; }
+    body.dark .theme-toggle { color: var(--text) !important; }
+    body.dark .section-count { color: var(--text) !important; }
+    body.dark .section-header.section-header-strong { color: var(--text) !important; }
+    body.dark .section-header.section-header-strong h3 { color: var(--text) !important; }
+    body.dark .section-header.section-header-strong .section-count { color: var(--text) !important; }
+    body.dark .btn-verify { color: var(--text) !important; }
+    body.dark .about-badge { color: var(--text) !important; }
+    body.dark .how-num { color: var(--text) !important; }
     .feature-grid,
     .about-grid {
       display: grid;
@@ -584,7 +595,7 @@
     }
     body.dark .about-badge {
       background: rgba(125,211,252,0.14);
-      color: var(--surface);
+      color: var(--text) !important;
     }
     .about-values ul {
       list-style: none;
