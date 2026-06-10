@@ -731,6 +731,14 @@ def health():
         "mongodb_connected":      mongo_client is not None
     })
 
+@app.route("/ping", methods=["GET"])
+def ping():
+    return jsonify({"status": "awake"})
+
+@app.route("/", methods=["GET"])
+def index():
+    return jsonify({"message": "FableWall backend is running. Use POST /verify to check a claim."})
+
 
 connect_mongodb()
 train_ml_models()

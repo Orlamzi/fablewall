@@ -972,14 +972,20 @@
     results.classList.remove("active");
     errBox.style.display = "none";
     btnVerify.disabled = true;
+    document.querySelector(".spinner-text").textContent = "Connecting to server... This may take up to 60 seconds on first load.";
     btnVerify.innerHTML = "<span>Checking...</span>";
 
     try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 120000);
+
       const resp = await fetch(API_BASE + "/verify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ claim })
+        body: JSON.stringify({ claim }),
+        signal: controller.signal
       });
+      clearTimeout(timeoutId);
 
       const data = await resp.json();
 
@@ -990,12 +996,17 @@
 
       renderResults(data);
 
-    } catch (err) {
-      showInputError("Could not reach the FableWall server. Make sure the backend is running on localhost:5000.");
-    } finally {
+   } catch (err) {
+    if (err.name === "AbortError") {
+    showInputError("The server is taking longer than expected. Please wait a moment and try again.");
+  } else {
+    showInputError("Could not reach the FableWall server. Please try again in a few seconds.");
+  }
+} finally {
       spinner.classList.remove("active");
       btnVerify.disabled = false;
       btnVerify.innerHTML = "<span>Check Claim</span><span>&#8594;</span>";
+      document.querySelector(".spinner-text").textContent = "Searching fact-check databases and running ML analysis...";
     }
   });
 
